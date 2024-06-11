@@ -10,7 +10,7 @@ public abstract class Base implements PalavraFiltro {
     protected List<String> palavroes;
 
     public Base() throws IOException {
-        palavroes = carregarPalavroes("palavroes.txt");
+        palavroes = carregarPalavroes("C:\\temp\\ws-eclipse\\filtroDePalavras\\src\\palavroes.txt");
     }
 
     private List<String> carregarPalavroes(String fileName) throws IOException {
@@ -24,9 +24,9 @@ public abstract class Base implements PalavraFiltro {
         return listaPalavroes;
     }
 
-    protected String substituirPalavrao(String palavra) {
-        return "****";
-    }
+    protected String substituirPalavrao() {
+		return null;
+	}
 
     @Override
     public abstract String filtrar(String frase);
