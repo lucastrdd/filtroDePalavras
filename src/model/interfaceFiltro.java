@@ -1,5 +1,5 @@
 package model;
 
-public interface PalavraFiltro {
+public interface interfaceFiltro {
 	String filtrar(String frase);
 }

@@ -6,28 +6,36 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Base implements PalavraFiltro {
+public abstract class Base implements interfaceFiltro {
+    protected String fraseCompleta;
     protected List<String> palavroes;
 
-    public Base() throws IOException {
-        palavroes = carregarPalavroes("C:\\temp\\ws-eclipse\\filtroDePalavras\\src\\palavroes.txt");
+    public Base(String fraseCompleta) throws IOException {
+        this.fraseCompleta = fraseCompleta;
+        this.palavroes = carregarPalavroes("./src/palavroes.txt");
     }
 
     private List<String> carregarPalavroes(String fileName) throws IOException {
         List<String> listaPalavroes = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        BufferedReader arquivo = new BufferedReader(new FileReader(fileName));
         String linha;
-        while ((linha = br.readLine()) != null) {
-            listaPalavroes.add(linha.trim());
+        while ((linha = arquivo.readLine()) != null) {
+            listaPalavroes.add(linha.trim().toLowerCase());
         }
-        br.close();
+        arquivo.close();
         return listaPalavroes;
     }
 
     protected String substituirPalavrao() {
-		return null;
-	}
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return this.fraseCompleta;
+    }
 
     @Override
     public abstract String filtrar(String frase);
+
 }
